@@ -49,7 +49,6 @@ pipeline {
         }
         stage('Deploy with Ansible') {
             steps {
-                sh 'conda deactivate'
                 sh 'ansible-playbook deploy_calculator.yml'
             }
         }
