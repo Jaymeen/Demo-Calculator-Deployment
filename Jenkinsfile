@@ -47,6 +47,13 @@ pipeline {
                 }
             }
         }
+        stage('Remove Docker Local Image') {
+                    steps {
+                        withDockerRegistry([credentialsId: '545029ae-9452-4e35-a1b2-02469129502d', url: 'https://index.docker.io/v1/']) {
+                            sh 'docker rmi jaymeenk/scientific-calculator:latest'
+                        }
+                    }
+                }
         stage('Deploy with Ansible') {
             steps {
                 script {
