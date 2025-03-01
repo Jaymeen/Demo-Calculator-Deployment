@@ -49,7 +49,20 @@ pipeline {
         }
         stage('Deploy with Ansible') {
             steps {
-                sh 'ansible-playbook deploy_calculator.yml'
+                script {
+                    try {
+                        // Install Docker SDK before running playbook
+                        sh '''
+                        echo "Installing Docker SDK for Python..."
+                        pip3 install docker
+                        '''
+
+                        // Run the playbook
+                        sh 'ansible-playbook -i inventory.yml deploy-calculator.yml'
+                    } catch (Exception e) {
+                        error("Ansible Deployment failed: ${e}")
+                    }
+                }
             }
         }
     }
