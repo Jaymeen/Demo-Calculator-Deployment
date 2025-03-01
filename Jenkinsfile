@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Docker Push') {
             steps {
-                withDockerRegistry([credentialsId: '545029ae-9452-4e35-a1b2-02469129502d']) {
+                withDockerRegistry([credentialsId: '545029ae-9452-4e35-a1b2-02469129502d', url: 'https://index.docker.io/v1/']) {
                     sh 'docker push your-dockerhub-username/scientific-calculator:latest'
                 }
             }
