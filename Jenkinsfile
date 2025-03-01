@@ -47,6 +47,11 @@ pipeline {
                 }
             }
         }
+        stage('Deploy with Ansible') {
+        steps {
+                sh 'ansible-playbook deploy_calculator.yml'
+            }
+        }
     }
     post {
         always {
