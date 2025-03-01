@@ -58,7 +58,7 @@ pipeline {
                         '''
 
                         // Run the playbook
-                        sh 'ansible-playbook -i inventory.yml deploy-calculator.yml'
+                        sh 'ansible-playbook deploy_calculator.yml'
                     } catch (Exception e) {
                         error("Ansible Deployment failed: ${e}")
                     }
