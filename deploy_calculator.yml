@@ -1,6 +1,4 @@
 - hosts: localhost
-  vars:
-    ansible_python_interpreter: /home/jarvis/miniconda3/bin/python
   tasks:
     - name: Pull Docker image
       docker_image:
@@ -13,4 +11,4 @@
         image: jaymeenk/scientific-calculator:latest
         state: started
         ports:
-          - "8080:8080"
+          - "8085:8080"
